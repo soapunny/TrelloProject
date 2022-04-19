@@ -1,0 +1,150 @@
+myString = myString.toLowerCase(); //This is the variable with the address line
+string label = "";
+
+
+if(myString.indexOf("14100") && myString.indexOf("lakeshore")) {
+label="Breakwater";
+}
+
+if(myString.indexOf("4605") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+if(myString.indexOf("4607") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+if(myString.indexOf("4609") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+if(myString.indexOf("4611") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+if(myString.indexOf("4613") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+if(myString.indexOf("4615") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+if(myString.indexOf("4617") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+if(myString.indexOf("4619") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+if(myString.indexOf("4621") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+if(myString.indexOf("4623") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+ifmyString.indexOf("4625") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+ifmyString.indexOf("4627") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+if(myString.indexOf("4629") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+if(myString.indexOf("4631") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+if(myString.indexOf("4633") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+if(myString.indexOf("4635") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+
+if(myString.indexOf("4637") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+
+if(myString.indexOf("4639") && myString.indexOf("131")) {
+label="One-3-One";
+}
+
+
+if(myString.indexOf("3537") && myString.indexOf("bosworth")) {
+label="Bosworth";
+}
+
+if(myString.indexOf("3537") && myString.indexOf("bosworth")) {
+label="Bosworth";
+}
+
+if(myString.indexOf("2027") && myString.indexOf("lee")) {
+label="Lee-Yorkshire";
+}
+
+if(myString.indexOf("3211") && myString.indexOf("lee")) {
+label="Lee-Yorkshire";
+}
+
+if(myString.indexOf("1692") && myString.indexOf("55")) {
+label="Body Block";
+}
+
+if(myString.indexOf("4925") && myString.indexOf("payne")) {
+label="Body Block";
+}
+
+if(myString.indexOf("2006") && myString.indexOf("hillcrest")) {
+label="Hall of Fame";
+}
+
+if(myString.indexOf("2008") && myString.indexOf("hillcrest")) {
+label="Hall of Fame";
+}
+
+if(myString.indexOf("2700") && myString.indexOf("harrison")) {
+label="Hall of Fame";
+}
+
+if(myString.indexOf("2701") && myString.indexOf("harrison")) {
+label="Hall of Fame";
+}
+
+if(myString.indexOf("2702") && myString.indexOf("harrison")) {
+label="Hall of Fame";
+}
+
+if(myString.indexOf("2703") && myString.indexOf("harrison")) {
+label="Hall of Fame";
+}
+
+if(myString.indexOf("2704") && myString.indexOf("harrison")) {
+label="Hall of Fame";
+}
+
+if(myString.indexOf("2705") && myString.indexOf("harrison")) {
+label="Hall of Fame";
+}
+
+if(myString.indexOf("2706") && myString.indexOf("harrison")) {
+label="Hall of Fame";
+}
+
+if(myString.indexOf("5445") && myString.indexOf("lee")) {
+label="Lee Mustang";
+}
+
+if(myString.indexOf("14901") && myString.indexOf("turney")) {
+label="Parkwood";
+}

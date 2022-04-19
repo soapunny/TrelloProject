@@ -1,0 +1,45 @@
+#Questions
+1. Who moves the card?
+-> human
+2. How to calculate the time of the moves
+-> Look at the log(activities) calculate the time from it.
+3. butler in trello
+-> activities parts.
+
+#Trello
+
+- card : checklist(plan has to be done)
+process goes one by one automatically.
+
+
+Appfolio -> create the card if the card is not on the Trello.
+naming rules(discuss)
+
+1. From the Mail-box, read the unopened, "RETURNED KEYS:" mail.
+-> the email will be sent to keys-returned@smartland.com
+-> RETURNED KEYS: [Address], [City] [Zip Code] [Unit Number (if exists)]
+2. Search the property in Appfolio
+3. If the card doesn't exist, add the card.
+if the card exist, initialize the card.
+4. As the card moves from column to column it leaves the activity logs
+5. calculate the time(hours:minutes) between the moves.
+6. even if the card go back doesn't change the log or time
+
+6. Going back to appfolio(not decided yet)
+
+
+----------------------------04/19/2022-------------------------------
+
+If problem happened notify Victor by email
+Email && password remember function in DB.
+Search about the Google API using gmail.
+Naming? -> we will decide it later.
+
+1. Read the subject from gmail and then verify it(address and unit number) in the appfolio.
+2. Click the tenant name.
+3. Check the key return in Notes.
+*If the bot cannot find the property or Keyreturn message in Notes, notify Victor.
+
+
+----------------------------04/20/2022-------------------------------
+
