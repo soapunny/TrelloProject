@@ -30,6 +30,7 @@ public class SettingFrame extends CommonFrame{
 
 	public SettingFrame() {
 		start();
+		displayApp(); //at last
 	}
 	
 	@Override

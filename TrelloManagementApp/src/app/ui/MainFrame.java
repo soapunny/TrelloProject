@@ -26,6 +26,7 @@ public class MainFrame extends CommonFrame {
 
 	public MainFrame() {
 		start();
+		displayApp();//at last
 	}
 
 	@Override

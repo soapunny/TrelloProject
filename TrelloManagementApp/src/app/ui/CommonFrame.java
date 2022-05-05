@@ -27,6 +27,9 @@ public class CommonFrame extends JFrame {
 		initPrivateSetting();
 		initCommonEvents();
 		initPrivateEvents();
+	}
+	
+	protected void displayApp() {
 		this.setVisible(true);
 	}
 	

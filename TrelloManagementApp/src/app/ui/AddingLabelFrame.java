@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import app.enumeration.TaskNames;
+import app.logic.Automation;
+import app.logic.dto.LabelDTO;
 import app.ui.util.UIUtil;
 
 public class AddingLabelFrame extends CommonFrame{
@@ -87,6 +89,11 @@ public class AddingLabelFrame extends CommonFrame{
 
 	protected void addLabel() {
 		//TODO add the label in the db.
+		LabelDTO labelDTO = null;
+		Automation automation = Automation.getInstance();
+		boolean isSuccess = automation.addLabel(labelDTO);
+		
+		System.out.println("label 추가 : "+isSuccess);
 		this.exit();
 	}
 

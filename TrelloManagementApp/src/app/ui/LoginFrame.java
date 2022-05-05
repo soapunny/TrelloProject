@@ -2,6 +2,10 @@ package app.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -10,6 +14,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import app.enumeration.TaskNames;
+import app.logic.Automation;
+import app.logic.dto.LoginDTO;
 import app.ui.util.UIUtil;
 
 public class LoginFrame extends CommonFrame {
@@ -29,21 +35,30 @@ public class LoginFrame extends CommonFrame {
 		start();
 		currentTask = taskName;
 		initLoginInformation();
+		displayApp();
 	}
 	
 	private void initLoginInformation() {
 		titleL.setText(currentTask.getName());
+		Automation automation = Automation.getInstance();
 		
 		//TODO get account information from DB
+		LoginDTO loginDTO = null;
 		switch(currentTask){
-		case LOGIN_APP:
+		case LOGIN_APP: loginDTO = automation.checkIsRemembered(TaskNames.LOGIN_APP);
 			break;
-		case LOGIN_EMAIL:
+		case LOGIN_EMAIL: //loginDTO = automation.checkIsRemembered(TaskNames.LOGIN_EMAIL);
 			break;
-		case LOGIN_TRELLO:
+		case LOGIN_TRELLO: //loginDTO = automation.checkIsRemembered(TaskNames.LOGIN_TRELLO);
 			break;
-		case LOGIN_APPFOLIO:
+		case LOGIN_APPFOLIO: //loginDTO = automation.checkIsRemembered(TaskNames.LOGIN_APPFOLIO);
 			break;	
+		}
+		
+		if(loginDTO != null) {
+			emailF.setText(loginDTO.getEmail());
+			pwdF.setText(loginDTO.getPassword());
+			rememberMeC.setSelected(loginDTO.getRemembered());
 		}
 	}
 
@@ -105,8 +120,7 @@ public class LoginFrame extends CommonFrame {
 	public void login() {
 		//TODO login validation check
 		if(currentTask == TaskNames.LOGIN_APP) {
-			new MainFrame();
-			this.exit();
+			loginApp();
 		}
 		else if(currentTask == TaskNames.LOGIN_EMAIL) {
 			this.exit();
@@ -117,5 +131,22 @@ public class LoginFrame extends CommonFrame {
 		else if(currentTask == TaskNames.LOGIN_APPFOLIO) {
 			this.exit();
 		}
+	}
+
+	private void loginApp() {
+		//validation check first
+		String email = emailF.getText();
+		String pwd = new String(pwdF.getPassword());
+		boolean isRemembered = rememberMeC.isSelected();
+		LocalDateTime nyNow = LocalDateTime.now(ZoneId.of("US/Eastern"));
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MM-dd-yyyy/HH:mm:ss");
+		String loginTime = nyNow.format(dateTimeFormatter);
+		LoginDTO loginDTO = new LoginDTO(email, pwd, isRemembered, loginTime);
+		boolean hasLoginSucceeded = Automation.getInstance().login(TaskNames.LOGIN_APP, loginDTO);
+		if(hasLoginSucceeded) {
+			new MainFrame();
+			this.exit();
+		}else
+			System.out.println("Login Fail");
 	}
 }
