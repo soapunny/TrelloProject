@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import app.db.entity.LoginEntity;
-import app.logic.Automation;
 
 public class AppDAO {
 	private static AppDAO instance = null;

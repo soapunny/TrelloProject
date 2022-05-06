@@ -10,14 +10,13 @@ public class LoginTask extends Task {
 	@Override
 	public Object doTask(TaskNames task, Object param) {
 		Object object = null;
-		boolean hasSucceeded = true;
 		
 		if(task == TaskNames.LOGIN_APP) {
 			if(param == null) {
 				object = checkRememberedOnApp();
 			}
 			else {
-				hasSucceeded = loginApp((LoginDTO)param);
+				object = loginApp((LoginDTO)param);
 			}
 		}
 		else if(task == TaskNames.LOGIN_APPFOLIO) {
@@ -25,7 +24,7 @@ public class LoginTask extends Task {
 				object = checkRememberedOnAppfolio();
 			}
 			else {
-				hasSucceeded = loginAppfolio((LoginDTO)param);
+				object = loginAppfolio((LoginDTO)param);
 			}
 		}
 		else if(task == TaskNames.LOGIN_EMAIL) {
@@ -33,7 +32,7 @@ public class LoginTask extends Task {
 				object = checkRememberedOnGmail();
 			}
 			else {
-				hasSucceeded = loginGmail((LoginDTO)param);
+				object = loginGmail((LoginDTO)param);
 			}
 		}
 		else if(task == TaskNames.LOGIN_TRELLO) {
@@ -41,13 +40,8 @@ public class LoginTask extends Task {
 				object = checkRememberedOnTrello();
 			}
 			else {
-				hasSucceeded = loginTrello((LoginDTO)param);
+				object = loginTrello((LoginDTO)param);
 			}
-		}
-		
-		if(hasSucceeded == false) {
-			//TODO Login fail Exception
-			object = Boolean.FALSE;
 		}
 		
 		return object;

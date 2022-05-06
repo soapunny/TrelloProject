@@ -8,7 +8,9 @@ public enum TaskNames {
 	ACTIVITY("Activity"),
 	REFINING_DATA("Refining data"),
 	ADDING_LABEL("Label Edit"),
-	ADDING_CARD("Add card");
+	REFRESH_LABEL("Refresh the labeling table"),
+	ADDING_CARD("Add card"), 
+	DELETE_LABEL("Delete labels from labeling table");
 	
 	private final String name;
 	

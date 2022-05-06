@@ -1,5 +1,9 @@
 package app.logic;
 
+import java.util.ArrayList;
+
+import javax.swing.table.DefaultTableModel;
+
 import app.enumeration.TaskNames;
 import app.logic.dto.LabelDTO;
 import app.logic.dto.LoginDTO;
@@ -35,15 +39,20 @@ public class Automation {
 	
 	//Add the instance of Chromedriver on the parameter of the method below.
 	public boolean login(TaskNames task, LoginDTO loginDTO) {
-		Object result = loginTask.doTask(task, loginDTO);
-		if(result == null)
-			return true;
-		else
-			return false;
+		return (boolean)loginTask.doTask(task, loginDTO);
 	}
 
 	public boolean addLabel(LabelDTO labelDTO) {
+		return (boolean)trelloTask.doTask(TaskNames.ADDING_LABEL, labelDTO);
+	}
+
+	public boolean refreshLabels(DefaultTableModel model) {
 		
-		return false;
+		return (boolean)trelloTask.doTask(TaskNames.REFRESH_LABEL, model);
+	}
+
+	public int deleteLabels(ArrayList<Integer> seqList) {
+		
+		return (int)trelloTask.doTask(TaskNames.DELETE_LABEL, seqList);
 	}
 }

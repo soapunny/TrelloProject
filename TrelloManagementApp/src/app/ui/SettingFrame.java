@@ -4,17 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import app.logic.Automation;
 import app.ui.util.UIUtil;
 
 public class SettingFrame extends CommonFrame{
@@ -30,9 +29,14 @@ public class SettingFrame extends CommonFrame{
 
 	public SettingFrame() {
 		start();
+		refreshLabels();
 		displayApp(); //at last
 	}
 	
+	public void refreshLabels() {
+		Automation.getInstance().refreshLabels((DefaultTableModel)labelTable.getModel());
+	}
+
 	@Override
 	protected void initPrivateSetting() {
 		titleL.setText("Label Table");
@@ -44,10 +48,10 @@ public class SettingFrame extends CommonFrame{
         labelTable.setModel(
     		new DefaultTableModel(
         		new Object[][] {},
-        		new String[] {"Check", "Address1", "Address2", "Label"}
+        		new String[] {"Seq", "Address1", "Address2", "Label"}
     		){
 	        	Class[] types = new Class[] {
-	        			JCheckBox.class, String.class, String.class, String.class
+	        			Integer.class, String.class, String.class, String.class
 	        	};
 	        	boolean[] canEdit = new boolean[] {
 	        			false, false, false, false
@@ -89,11 +93,37 @@ public class SettingFrame extends CommonFrame{
 				openAddingLabel();
 			}
 		});
+		
+		deleteBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				deleteLabels();
+			}
+		});
+	}
+	
+	private void deleteLabels() {
+		int[] rowIdxArray = labelTable.getSelectedRows();
+		if(rowIdxArray.length < 1) {
+			System.out.println("Select rows first!");
+			return;
+		}
+		
+		ArrayList<Integer> seqList = new ArrayList<>();
+		for(int i =0;i<rowIdxArray.length;i++) {
+			seqList.add((Integer)labelTable.getValueAt(rowIdxArray[i], 0));
+		}
+		int deletedRowsCnt = Automation.getInstance().deleteLabels(seqList);
+		if(deletedRowsCnt > 0)
+			System.out.println(deletedRowsCnt+" labels are deleted from table successfully");
+		else
+			System.out.println("Label delete fail");
+		refreshLabels();
 	}
 
 	protected void openAddingLabel() {
 		if(addingLabelFrame == null || !addingLabelFrame.isShowing())
-			addingLabelFrame = new AddingLabelFrame();
+			addingLabelFrame = new AddingLabelFrame(this);
 	}
 
 	@Override

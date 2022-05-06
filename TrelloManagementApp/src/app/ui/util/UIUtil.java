@@ -5,7 +5,6 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
-import app.ui.CommonFrame;
 import app.ui.UISetting;
 
 public class UIUtil {

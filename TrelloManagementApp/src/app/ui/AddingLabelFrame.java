@@ -24,10 +24,13 @@ public class AddingLabelFrame extends CommonFrame{
 	private JTextField labelF;
 	
 	private JButton addBtn;
+	private SettingFrame parentFrame;
 	
-	public AddingLabelFrame(){
+	public AddingLabelFrame(SettingFrame parentFrame){
 		start();
 		titleL.setText(TaskNames.ADDING_LABEL.getName());
+		this.parentFrame = parentFrame;
+		displayApp(); //at last
 	}
 	
 	@Override
@@ -88,12 +91,12 @@ public class AddingLabelFrame extends CommonFrame{
 	}
 
 	protected void addLabel() {
-		//TODO add the label in the db.
-		LabelDTO labelDTO = null;
-		Automation automation = Automation.getInstance();
-		boolean isSuccess = automation.addLabel(labelDTO);
-		
+		//TODO Validation check
+		LabelDTO labelDTO = new LabelDTO(0, address1F.getText(), address2F.getText(), labelF.getText());
+		boolean isSuccess = Automation.getInstance().addLabel(labelDTO);
 		System.out.println("label 추가 : "+isSuccess);
+		if(parentFrame != null)
+			parentFrame.refreshLabels();
 		this.exit();
 	}
 
